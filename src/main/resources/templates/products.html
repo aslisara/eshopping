@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ürün Listesi</title>
+</head>
+<body>
+<h1>Ürün Listesi</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Ürün Adı</th>
+        <th>Fiyat</th>
+        <th>İşlem</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.name}">Ürün Adı</td>
+        <td th:text="${product.price}">0.00</td>
+        <td>
+            <form th:action="@{/cart/add}" method="post">
+                <input type="hidden" th:value="${product.id}" name="productId"/>
+                <button type="submit">Sepete Ekle</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/cart}">Sepete Git</a>
+</body>
+</html>

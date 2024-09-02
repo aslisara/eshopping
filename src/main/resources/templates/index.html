@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>eShopping Platform</title>
+    <meta charset="UTF-8">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        .nav-bar a {
+            margin: 0 15px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro p {
+            font-size: 18px;
+            color: #6c757d;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .products, .cart-summary, .order-history {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .product, .cart-item, .order-item {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin: 10px;
+            width: calc(33% - 20px);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover, .cart-item:hover, .order-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img, .cart-item img, .order-item img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .product h3, .cart-item h3, .order-item h3 {
+            font-size: 1.25em;
+            color: #343a40;
+            margin: 10px 0;
+        }
+
+        .product p, .cart-item p, .order-item p {
+            font-size: 16px;
+            color: #6c757d;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button-container a {
+            padding: 12px 24px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container a:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .product, .cart-item, .order-item {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product, .cart-item, .order-item {
+                width: 100%;
+            }
+
+            .nav-bar a {
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>eShopping Platform'a Hoş Geldiniz!</h1>
+    <div class="nav-bar">
+        <a th:href="@{/homepage}">Ana Sayfa</a>
+        <a th:href="@{/products}">Ürünler</a>
+        <a th:href="@{/cart}">Sepet</a>
+        <a th:href="@{/order}">Siparişler</a>
+    </div>
+
+    <div class="intro">
+        <p>Alışveriş yapmaya başlamadan önce platformumuzu keşfedin. İhtiyacınıza uygun ürünleri bulmak ve sipariş vermek çok kolay.</p>
+    </div>
+
+    <div class="section">
+        <h2>Öne Çıkan Ürünler</h2>
+        <div class="products">
+            <!-- Ürün örnekleri -->
+            <div class="product">
+                <img src="example-product.jpg" alt="Ürün Resmi">
+                <h3>Ürün Adı 1</h3>
+                <p>Fiyat: 100.00 TL</p>
+                <a href="#" class="button-container">Ürünü Görüntüle</a>
+            </div>
+            <div class="product">
+                <img src="example-product.jpg" alt="Ürün Resmi">
+                <h3>Ürün Adı 2</h3>
+                <p>Fiyat: 150.00 TL</p>
+                <a href="#" class="button-container">Ürünü Görüntüle</a>
+            </div>
+            <div class="product">
+                <img src="example-product.jpg" alt="Ürün Resmi">
+                <h3>Ürün Adı 3</h3>
+                <p>Fiyat: 200.00 TL</p>
+                <a href="#" class="button-container">Ürünü Görüntüle</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Sepet Özeti</h2>
+        <div class="cart-summary">
+            <!-- Sepet örneği -->
+            <div class="cart-item">
+                <img src="example-product.jpg" alt="Ürün Resmi">
+                <h3>Ürün Adı 1</h3>
+                <p>Adet: 2</p>
+                <p>Fiyat: 100.00 TL</p>
+                <p>Toplam: 200.00 TL</p>
+            </div>
+            <div class="cart-item">
+                <img src="example-product.jpg" alt="Ürün Resmi">
+                <h3>Ürün Adı 2</h3>
+                <p>Adet: 1</p>
+                <p>Fiyat: 150.00 TL</p>
+                <p>Toplam: 150.00 TL</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <a th:href="@{/cart}" class="button-container">Sepeti Görüntüle</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Sipariş Geçmişi</h2>
+        <div class="order-history">
+            <!-- Sipariş örneği -->
+            <div class="order-item">
+                <h3>Sipariş #12345</h3>
+                <p>Tarih: 01/08/2024</p>
+                <p>Toplam: 350.00 TL</p>
+                <a href="#" class="button-container">Siparişi Görüntüle</a>
+            </div>
+            <div class="order-item">
+                <h3>Sipariş #12346</h3>
+                <p>Tarih: 15/08/2024</p>
+                <p>Toplam: 200.00 TL</p>
+                <a href="#" class="button-container">Siparişi Görüntüle</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 eShopping Platform. <a th:href="@{/about}">Hakkımızda</a> | <a th:href="@{/contact}">İletişim</a></p>
+    </div>
+</div>
+</body>
+</html>

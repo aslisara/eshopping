@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alışveriş Sepeti</title>
+    <style>
+        /* CSS stil ayarları burada */
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Sepetiniz</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Toplam</th>
+            <th>İşlem</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cartItem : ${cartItems}">
+            <td th:text="${cartItem.product.name}">Ürün Adı</td>
+            <td th:text="${cartItem.quantity}">1</td>
+            <td th:text="${cartItem.formattedPrice}">0.00</td>
+            <td th:text="${cartItem.formattedTotalPrice}">0.00</td>
+            <td>
+                <form th:action="@{/cart/remove}" method="post" th:object="${cartItem}">
+                    <input type="hidden" th:value="${cartItem.product.id}" name="productId"/>
+                    <button type="submit" class="remove-btn">Kaldır</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="total-price">
+        <strong>Toplam Fiyat:</strong> <span th:text="${totalPrice}">0.00</span> TL
+    </div>
+    <form th:action="@{/order/checkout}" method="post">
+        <button type="submit" class="checkout-btn">Sipariş Ver</button>
+    </form>
+</div>
+<div class="footer">
+    <p>© 2024 eShopping Platform. <a th:href="@{/products}">Alışverişe Devam Et</a></p>
+</div>
+</body>
+</html>
